@@ -1,0 +1,20 @@
+{
+    "name": "ab-hoc",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "",
+    "author": "",
+    "license": "ISC",
+    "keywords": [],
+    "main": "index.js",
+    "scripts": {
+        "build": "pnpm -r --parallel build",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "^2.6.1",
+        "eslint": "^8.55.0",
+        "typescript": "^5.3.3"
+    }
+}
