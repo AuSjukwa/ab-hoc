@@ -8,13 +8,6 @@
         "A/B",
         "ab-hoc"
     ],
-    "files": [
-        "dist",
-        "src"
-    ],
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "module": "dist/index.mjs",
     "exports": {
         ".": {
             "import": {
@@ -28,15 +21,25 @@
         },
         "./package.json": "./package.json"
     },
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "src"
+    ],
     "scripts": {
         "build": "tsup",
         "tsc": "tsc",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "vitest",
+        "prepublish": "pnpm test && pnpm build"
     },
     "peerDependencies": {
         "react": "^16.0.0"
     },
     "devDependencies": {
+        "@testing-library/react": "^14.1.2",
+        "@testing-library/user-event": "^14.5.2",
         "@types/node": "^20.10.6",
         "@types/react": "^18.2.45",
         "react": "^18.2.0",

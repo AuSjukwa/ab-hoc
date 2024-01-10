@@ -4,8 +4,8 @@ import { type ABKey, type ObjectUnion, type UnionToFnUnoin, type UnionToIntersec
 type GetProps<T extends Component> = T extends new (...args: any[]) => any
     ? InstanceType<T>['$props']
     : T extends (props: infer P) => any
-    ? P
-    : any;
+        ? P
+        : any;
 
 export function abHocGenerator(abKey: MaybeRef<ABKey[]>) {
     return <T extends Component, O extends { [key: string]: Component }>(base: T, ab: O) => {

@@ -1,21 +1,21 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "target": "ESNext",
+        "jsx": "preserve",
         "lib": ["ESNext"],
+        "baseUrl": ".",
         "module": "ESNext",
         "moduleResolution": "Node",
-        "resolveJsonModule": true,
-        "jsx": "preserve",
-        "strict": true,
-        "strictNullChecks": true,
-        "esModuleInterop": true,
-        "skipDefaultLibCheck": true,
-        "skipLibCheck": true,
-        "noEmit": true,
         "paths": {
             "core": ["../core"]
-        }
+        },
+        "resolveJsonModule": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
     },
     "include": ["src/**/*"]
 }
