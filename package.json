@@ -11,7 +11,8 @@
         "build": "pnpm -r --parallel build",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "test": "pnpm -r --parallel test"
+        "test": "pnpm -r --parallel test",
+        "release": "pnpm -r --parallel release"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.6.1",

@@ -1,12 +1,14 @@
 {
     "name": "react-ab-hoc",
-    "version": "1.0.0",
-    "description": "",
+    "version": "0.0.1",
+    "description": "A react hoc for A/B testing",
     "author": "AuSjukwa",
     "license": "MIT",
     "keywords": [
         "A/B",
-        "ab-hoc"
+        "ab",
+        "react",
+        "hoc"
     ],
     "exports": {
         ".": {
@@ -32,7 +34,8 @@
         "build": "tsup",
         "tsc": "tsc",
         "test": "vitest",
-        "prepublish": "pnpm test && pnpm build"
+        "release": "pnpm publish --access public",
+        "prepublish": "pnpm build"
     },
     "peerDependencies": {
         "react": "^16.0.0"
