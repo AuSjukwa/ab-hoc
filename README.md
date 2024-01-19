@@ -15,6 +15,7 @@ A hoc handling A/B tests for React and Vue
 
 ## Quick Features
 
--   A simple way to handle A/B tests in your app
--   Easily add and remove A/B tests
--   Support reactive A/B signs
+- A simple way to handle A/B tests in your app
+- Easily add and remove A/B tests
+- Easily toggle show and hide component
+- Support reactive A/B signs

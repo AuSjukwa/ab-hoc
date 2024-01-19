@@ -14,12 +14,14 @@ pnpm install react-ab-hoc
 
 ## Quick Start
 
-```typescript
-// AB.tsx
+```ts
+// AB.ts
+import React from 'react';
 import { withAbHoc } from 'react-ab-hoc';
-import ComponentBase from './ComponentBase';
-import ComponentA from './ComponentA';
-import ComponentB from './ComponentB';
+
+const ComponentBase = lazy(() => import('ComponentBase'));
+const ComponentA = lazy(() => import('ComponentA'));
+const ComponentB = lazy(() => import('ComponentB'));
 
 export default withAbHoc(ComponentBase, {
     s_a: ComponentA,
@@ -27,21 +29,23 @@ export default withAbHoc(ComponentBase, {
 });
 ```
 
-```typescript
+```tsx
 // App.tsx
 import React from 'react';
 import { AbContext } from 'react-ab-hoc';
-import AB from './AB.tsx';
+import AB from './AB';
 
-const App = () => {
+function App() {
     const abSigns = React.useState(['s_a']);
 
     return (
         <AbContext.Provider value={abSigns}>
-            <AB />
+            <Suspense fallback={<div>Loading...</div>}>
+                <AB />
+            </Suspense>
         </AbContext.Provider>
     );
-};
+}
 export default App;
 ```
 

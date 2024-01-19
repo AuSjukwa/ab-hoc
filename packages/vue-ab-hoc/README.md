@@ -4,7 +4,7 @@
 
 ## Install
 
-```shell
+```sh
 npm install vue-ab-hoc
 
 yarn add vue-ab-hoc
@@ -14,12 +14,14 @@ pnpm install vue-ab-hoc
 
 ## Quick Start
 
-```typescript
+```ts
 // AB.ts
+import { defineAsyncComponent } from 'vue';
 import { withAbHoc } from 'vue-ab-hoc';
-import ComponentBase from './ComponentBase';
-import ComponentA from './ComponentA';
-import ComponentB from './ComponentB';
+
+const ComponentBase = defineAsyncComponent(() => import('./ComponentBase'));
+const ComponentA = defineAsyncComponent(() => import('./ComponentA'));
+const ComponentB = defineAsyncComponent(() => import('./ComponentB'));
 
 export default withAbHoc(ComponentBase, {
     s_a: ComponentA,
@@ -27,7 +29,7 @@ export default withAbHoc(ComponentBase, {
 });
 ```
 
-```typescript
+```ts
 // main.ts
 import { createApp, ref } from 'vue';
 import { WithAbHocPlugin } from 'vue-ab-hoc';
