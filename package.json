@@ -8,9 +8,11 @@
     "keywords": [],
     "main": "index.js",
     "scripts": {
-        "build": "pnpm -r --parallel build",
+        "build": "nx run-many --target=build --exclude=examples/**",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
+        "watch": "pnpm build && nx watch --all -- pnpm build",
+        "dev": "pnpm watch",
         "test": "pnpm -r --parallel test",
         "release": "pnpm -r --parallel release"
     },
@@ -21,6 +23,7 @@
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
+        "nx": "17.2.8",
         "typescript": "^5.3.3",
         "vitest": "^1.1.3"
     }
