@@ -27,30 +27,32 @@ export function abHocGenerator(abKeys: MaybeRef<ABKey[]>) {
     ) => {
         return defineComponent((_, ctx) => {
             const hitted = shallowRef<Component | null>(null);
-            let latestRequest: Promise<Component> | null = null;
 
             watch(
                 abKeys,
-                () => {
+                (_n, _o, onCleanup) => {
+                    let change = false;
+
                     const com = strategy(isRef(abKeys) ? abKeys.value : abKeys)(base, ab);
                     if (typeof com === 'function' && '__ab_async__' in com && com.__ab_async__) {
-                        const currentRequest = com();
-                        latestRequest = currentRequest;
-                        currentRequest
-                            .then((comp: any) => {
-                                if (currentRequest !== latestRequest)
-                                    return;
+                        com().then((comp: any) => {
+                            if (change)
+                                return;
 
-                                if (comp && (comp.__esModule || comp[Symbol.toStringTag] === 'Module'))
-                                    comp = comp.default;
-                                hitted.value = comp;
-                            });
+                            if (comp && (comp.__esModule || comp[Symbol.toStringTag] === 'Module'))
+                                comp = comp.default;
+                            hitted.value = comp;
+                        });
                     }
                     else {
                         hitted.value = com;
                     }
+
+                    onCleanup(() => {
+                        change = true;
+                    });
                 },
-                { immediate: true },
+                { immediate: true, deep: true },
             );
 
             return () => (hitted.value ? h(hitted.value, ctx.attrs, ctx.slots) : null);
