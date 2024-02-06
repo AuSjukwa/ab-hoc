@@ -1,24 +1,40 @@
 import { describe, expect, it } from 'vitest';
 import { config, mount } from '@vue/test-utils';
 import { h, nextTick, ref } from 'vue';
-import { WithAbHocPlugin, abHocGenerator, withAbHoc } from '../src';
+import { type ABKey, WithAbHocPlugin, abHocGenerator, asyncComponent, withAbHoc } from '../src';
+
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 
 describe('vue-ab-hoc', () => {
     const componentBase = () => h('div', 'Base');
     const componentA = () => h('div', 'A');
     const componentB = () => h('div', 'B');
-    const abKeys = ref<string[]>([]);
+    const abKeys = ref<ABKey[]>([]);
 
     config.global.plugins = [[WithAbHocPlugin, abKeys]];
 
-    const component = mount(
-        withAbHoc(componentBase, {
-            s_user_a: componentA,
-            s_user_b: componentB,
-        }),
-    );
+    describe.each([
+        { fnName: 'withAbHoc', hoc: withAbHoc, abKeys },
+        {
+            fnName: 'abHocGenerator',
+            ...(() => {
+                const abKeys = ref<ABKey[]>([]);
+                return { hoc: abHocGenerator(abKeys), abKeys };
+            })(),
+        },
+    ])('$fnName', ({ hoc, abKeys }) => {
+        const component = mount(
+            hoc(componentBase, {
+                s_user_a: componentA,
+                s_user_b: asyncComponent(async () => {
+                    await sleep(100);
+                    return componentB;
+                }),
+            }),
+        );
 
-    describe('withAbHoc', () => {
         it('should mount component Base', () => {
             expect(component.isVisible()).toBeTruthy();
             expect(component.text()).toBe('Base');
@@ -26,32 +42,34 @@ describe('vue-ab-hoc', () => {
 
         it('should mount component A', async () => {
             abKeys.value.push('s_user_a');
-
             await nextTick();
+
             expect(component.isVisible()).toBeTruthy();
             expect(component.text()).toBe('A');
         });
-    });
 
-    describe('abHocGenerator', () => {
-        const abKeys = ref<string[]>([]);
-        const abHoc = abHocGenerator(abKeys);
-        const component = mount(abHoc(componentBase, {
-            s_user_a: componentA,
-            s_user_b: componentB,
-        }));
+        it('should mount component B after componentB request is resolved', async () => {
+            abKeys.value = ['s_user_b'];
+            await nextTick();
 
-        it('should mount component Base', () => {
             expect(component.isVisible()).toBeTruthy();
-            expect(component.text()).toBe('Base');
+            expect(component.text()).toBe('A');
+            await sleep(100);
+            expect(component.text()).toBe('B');
         });
 
-        it('should mount component B', async () => {
-            abKeys.value.push('s_user_b');
-
+        it('should mount component A when toggle component B and then toggle component A', async () => {
+            abKeys.value = [];
             await nextTick();
+            abKeys.value = ['s_user_b'];
+            await nextTick();
+            abKeys.value = ['s_user_a'];
+            await nextTick();
+
             expect(component.isVisible()).toBeTruthy();
-            expect(component.text()).toBe('B');
+            expect(component.text()).toBe('A');
+            await sleep(100);
+            expect(component.text()).toBe('A');
         });
     });
 });

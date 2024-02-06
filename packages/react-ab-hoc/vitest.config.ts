@@ -14,6 +14,8 @@ export default defineConfig({
         watch: false,
         coverage: {
             enabled: true,
+            provider: 'v8',
         },
+        setupFiles: ['./__tests__/vitest.setup.ts'],
     },
 });

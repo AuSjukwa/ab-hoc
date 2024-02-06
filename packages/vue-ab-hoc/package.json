@@ -33,6 +33,7 @@
     "scripts": {
         "build": "tsup",
         "test": "vitest",
+        "test:watch": "vitest --watch",
         "release": "pnpm publish --access public",
         "prepublish": "pnpm build"
     },
