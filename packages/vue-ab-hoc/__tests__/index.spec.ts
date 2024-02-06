@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { config, mount } from '@vue/test-utils';
 import { h, nextTick, ref } from 'vue';
 import { type ABKey, WithAbHocPlugin, abHocGenerator, asyncComponent, withAbHoc } from '../src';
