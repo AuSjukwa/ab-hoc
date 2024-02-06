@@ -21,7 +21,7 @@ If you have been assigned to fix an issue or develop a new feature, please follo
   - We use [pnpm](https://pnpm.io/) v8 for package management (run `corepack enable && corepack prepare` in case of pnpm-related issues).
   - We use [asdf](https://github.com/asdf-vm/asdf) to manage node and pnpm versions - please make sure to use the version mentioned in `.tool-versions` (run `asdf install`).
 - Build all packages using `pnpm build`.
-- Run development server using `pnpm run watch`.
+- Run development server using `pnpm dev`.
 - Implement your changes and tests to files in the `src/` directory and corresponding test files.
 - Document your changes in the appropriate doc page.
 - Git stage your required changes and commit (see below commit guidelines).
@@ -30,12 +30,8 @@ If you have been assigned to fix an issue or develop a new feature, please follo
 ### Running examples
 
 - Make sure you've installed the dependencies by running `$ pnpm install` in the repo's root directory.
-- If you want to run the example against your local changes, run `pnpm run watch` in the repo's root directory. Otherwise, it will be run against the latest ab-hoc release.
-- Run `pnpm run dev` in the selected examples' directory.
-
-#### Note on `examples/react-native`
-
-React Native example requires Expo to work. Please follow the instructions from example's README.md file to learn more.
+- If you want to run the example against your local changes, run `pnpm dev` in the repo's root directory. Otherwise, it will be run against the latest ab-hoc release.
+- Run `pnpm run dev` in the selected examples' directory or Run `pnpm --filter {example package name} dev`.
 
 #### Note on standalone execution
 

@@ -42,6 +42,31 @@ app.use(WithAbHocPlugin, abSigns);
 app.mount('#app');
 ```
 
+## Async Component
+
+**Suggest using async component because A/B components just show one in the same time, others may not used most of the time.**
+
+If you want toggle components after async component is loaded, you can use `asyncComponent` in place of `defineAsyncComponent`.
+
+```js
+import { abComponent, withAbHoc } from 'vue-ab-hoc';
+export default withAbHoc(
+    asyncComponent(() => import('./ComponentBase')),
+    {
+        s_a: asyncComponent(() => import('./ComponentA')),
+        s_b: asyncComponent(() => import('./ComponentB')),
+    }
+);
+```
+
+### Both's side effect
+
+defineAsyncComponent
+<img src='../../docs/defineAsyncComponent.gif'>
+
+asyncComponent
+<img src='../../docs/asyncComponent.gif'>
+
 ## Generate a new A/B HOC
 
 If you want a new ab HOC with different sign list, you can use `abHocGenerator` to generate a HOC.
