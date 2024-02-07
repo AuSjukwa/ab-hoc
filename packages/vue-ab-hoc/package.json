@@ -34,7 +34,7 @@
         "build": "tsup",
         "test": "vitest",
         "test:watch": "vitest --watch",
-        "release": "pnpm publish --access public",
+        "release": "pnpm publish --access public --no-git-check",
         "prepublish": "pnpm build"
     },
     "peerDependencies": {
