@@ -1,6 +1,8 @@
 # react-ab-hoc
 
-<img src="https://img.shields.io/npm/v/react-ab-hoc?label=" alt="version" />
+![npm version](https://img.shields.io/npm/v/react-ab-hoc)
+![npm license](https://img.shields.io/npm/l/react-ab-hoc)
+![bundle size](https://img.shields.io/bundlephobia/minzip/react-ab-hoc)
 
 ## Install
 
@@ -69,10 +71,10 @@ export default withAbHoc(
 ### Side effect
 
 **lazy**
-<img src='../../docs/defineAsyncComponent.gif'>
+<img src='https://raw.githubusercontent.com/AuSjukwa/ab-hoc/main/docs/defineAsyncComponent.gif'>
 
 **asyncComponent**
-<img src='../../docs/asyncComponent.gif'>
+<img src='https://raw.githubusercontent.com/AuSjukwa/ab-hoc/main/docs/asyncComponent.gif'>
 
 ## Generate a new A/B HOC
 
