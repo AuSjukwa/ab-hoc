@@ -1,6 +1,6 @@
 {
     "name": "vue-ab-hoc",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A vue hoc for A/B testing",
     "author": "AuSjukwa",
     "license": "MIT",
@@ -38,7 +38,7 @@
         "prepublish": "pnpm build"
     },
     "peerDependencies": {
-        "vue": "^3.0.0"
+        "vue": ">=3.0.0"
     },
     "devDependencies": {
         "@vue/test-utils": "^2.4.3",

@@ -1,6 +1,6 @@
 {
     "name": "react-ab-hoc",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A react hoc for A/B testing",
     "author": "AuSjukwa",
     "license": "MIT",
@@ -39,7 +39,7 @@
         "prepublish": "pnpm build"
     },
     "peerDependencies": {
-        "react": "^16.0.0"
+        "react": ">=16.0.0"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^6.4.2",

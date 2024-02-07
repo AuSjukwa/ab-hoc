@@ -42,7 +42,7 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0
       react-ab-hoc:
-        specifier: ^0.0.1
+        specifier: ^0.0.2
         version: link:../../packages/react-ab-hoc
       react-dom:
         specifier: ^18.2.0
@@ -95,7 +95,7 @@ importers:
         specifier: ^5.0.8
         version: 5.0.11
       vue-ab-hoc:
-        specifier: ^0.0.1
+        specifier: ^0.0.2
         version: link:../../packages/vue-ab-hoc
       vue-tsc:
         specifier: ^1.8.25
