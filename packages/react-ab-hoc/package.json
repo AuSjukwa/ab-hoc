@@ -2,8 +2,17 @@
     "name": "react-ab-hoc",
     "version": "0.0.3",
     "description": "A react hoc for A/B testing",
-    "author": "AuSjukwa",
+    "author": "AuSjukwa <ausjukwa@qq.com>",
     "license": "MIT",
+    "homepage": "https://github.com/AuSjukwa/ab-hoc/blob/main/packages/react-ab-hoc#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AuSjukwa/ab-hoc",
+        "directory": "packages/react-ab-hoc"
+    },
+    "bugs": {
+        "url": "https://github.com/AuSjukwa/ab-hoc/issues"
+    },
     "keywords": [
         "A/B",
         "ab",

@@ -14,7 +14,7 @@
         "watch": "pnpm build && nx watch --all -- pnpm build",
         "dev": "pnpm watch",
         "test": "pnpm -r --parallel test",
-        "release": "bumpp package.json packages/**/package.json --commit --tag --push"
+        "release": "bumpp package.json packages/**/package.json --commit --no-tag --push"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.6.1",
