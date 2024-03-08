@@ -34,8 +34,7 @@
         "build": "tsup",
         "test": "vitest",
         "test:watch": "vitest --watch",
-        "release": "pnpm publish --access public --no-git-check",
-        "prepublish": "pnpm build"
+        "release": "pnpm publish --access public --no-git-check"
     },
     "peerDependencies": {
         "vue": ">=3.0.0"

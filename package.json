@@ -1,7 +1,7 @@
 {
     "name": "ab-hoc",
     "type": "module",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "description": "",
     "author": "",
     "license": "ISC",
@@ -14,11 +14,12 @@
         "watch": "pnpm build && nx watch --all -- pnpm build",
         "dev": "pnpm watch",
         "test": "pnpm -r --parallel test",
-        "release": "pnpm -r --parallel release"
+        "release": "bumpp package.json packages/**/package.json --commit --tag --push"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.6.1",
         "@vitest/coverage-v8": "^1.1.3",
+        "bumpp": "^9.4.0",
         "eslint": "^8.55.0",
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",

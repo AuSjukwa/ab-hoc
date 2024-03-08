@@ -30,9 +30,12 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
+            - name: Build
+              run: pnpm build
+
             - name: Publish
               run: |
                   npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-                  pnpm release
+                  pnpm -r publish --access public --no-git-check
               env:
                   NPM_TOKEN: ${{secrets.NPM_TOKEN}}
