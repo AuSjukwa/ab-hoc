@@ -1,6 +1,6 @@
 {
     "name": "react-ab-hoc",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "A react hoc for A/B testing",
     "author": "AuSjukwa <ausjukwa@qq.com>",
     "license": "MIT",
